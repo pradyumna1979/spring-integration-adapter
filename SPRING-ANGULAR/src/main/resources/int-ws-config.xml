@@ -23,34 +23,12 @@
 
 	<int-ws:outbound-gateway id="marshallingGateway"
 		request-channel="requestChannel" reply-channel="responseChannel"
-		uri="http://localhost:8080/spring-ws-tickets/tickets" marshaller="marshaller"
+		uri="http://localhost:8080/ws" marshaller="marshaller"
 		unmarshaller="marshaller">
 	</int-ws:outbound-gateway>
 
 	<oxm:jaxb2-marshaller id="marshaller"  context-path="com.att.springBoot.types"/>
+	<int:channel id="responseChannel"/>
 	
 	
-	
-	<bean id="myInterceptor" class="com.att.springBoot.interceptor.MyInterceptor" />
-	
-	<!-- Service is running - Response received -->
-	<int:channel id="responseChannel" />
-	
-	<bean id="retryAdvice" class="org.springframework.integration.handler.advice.RequestHandlerRetryAdvice" >
-	    <property name="retryTemplate">
-	        <bean class="org.springframework.retry.support.RetryTemplate">
-	            <property name="backOffPolicy">
-	                <bean class="org.springframework.retry.backoff.FixedBackOffPolicy">
-	                    <property name="backOffPeriod" value="5000" />
-	                </bean>
-	            </property>
-	            <property name="retryPolicy">
-	                <bean class="org.springframework.retry.policy.SimpleRetryPolicy">
-	                    <property name="maxAttempts" value="5" />
-	                </bean>
-	            </property>
-	        </bean>
-	    </property>
-	</bean>
-
 </beans>

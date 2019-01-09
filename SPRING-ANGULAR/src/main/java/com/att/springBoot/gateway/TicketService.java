@@ -2,8 +2,8 @@ package com.att.springBoot.gateway;
 
 import org.springframework.integration.annotation.Gateway;
 
-import com.att.springBoot.types.TicketRequest;
-import com.att.springBoot.types.TicketResponse;
+import com.att.springBoot.types.GetStudentDetailsRequest;
+import com.att.springBoot.types.GetStudentDetailsResponse;
 
 
 
@@ -16,5 +16,5 @@ public interface TicketService {
 	 * @param request
 	 */
 	@Gateway
-	public TicketResponse invoke(TicketRequest request);
+	public GetStudentDetailsResponse invoke(GetStudentDetailsRequest request);
 }

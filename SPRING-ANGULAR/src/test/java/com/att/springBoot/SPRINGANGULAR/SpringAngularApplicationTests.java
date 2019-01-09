@@ -15,9 +15,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.att.springBoot.gateway.TicketService;
-import com.att.springBoot.types.TicketRequest;
-import com.att.springBoot.types.TicketResponse;
-import com.att.springBoot.utils.DateUtils;
+import com.att.springBoot.types.GetStudentDetailsRequest;
+import com.att.springBoot.types.GetStudentDetailsResponse;
 
 
 @ContextConfiguration("classpath:int-ws-config.xml")
@@ -30,15 +29,12 @@ public class SpringAngularApplicationTests {
 	
 	@Test
 	public void testInvocation() throws InterruptedException, ExecutionException {
-		TicketRequest request = new TicketRequest();
-		request.setFilmId("aFilm");
-		request.setQuantity(new BigInteger("3"));
-		request.setSessionDate(DateUtils.convertDate(new Date()));
+		GetStudentDetailsRequest request = new GetStudentDetailsRequest();
+		request.setId(1);
 		
-		TicketResponse response = service.invoke(request);
+		GetStudentDetailsResponse response = service.invoke(request);
 		
 		assertNotNull(response);
-		assertEquals("aFilm", response.getFilmId());
-		assertEquals(new BigInteger("5"), response.getQuantity());
+		
 	}
 }
