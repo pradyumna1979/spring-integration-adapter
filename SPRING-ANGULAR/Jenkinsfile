@@ -5,13 +5,12 @@ node {
     }
     stage('Build') {
         if(isUnix()){
-        echo 'Unix'
-          // get Gradle HOME value
-         
-         //  run Gradle to execute compile and unit testing
-          sh 'maven clean build -x test'
+            echo 'Unix
+            sh 'maven clean build -x test'
         }else{
-        bat 'maven clean build -x test'
+            withMaven(...) {
+             bat "mvn clean install"
+            } 
         }
     }
     stage('TEST'){
