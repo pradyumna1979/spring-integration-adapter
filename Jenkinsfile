@@ -5,9 +5,10 @@ node {
     }
     stage('Build') {
         if(isUnix()){
-            echo 'Unix
+            echo 'Unix'
             sh 'maven clean build -x test'
         }else{
+            echo 'window'
             withMaven(...) {
              bat "mvn clean install"
             } 
