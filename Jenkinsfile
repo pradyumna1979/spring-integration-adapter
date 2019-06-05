@@ -9,7 +9,7 @@ node {
             sh 'maven clean build -x test'
         }else{
             echo 'window'
-            withMaven(...) {
+            withMaven() {
              bat "mvn clean install"
             } 
         }
